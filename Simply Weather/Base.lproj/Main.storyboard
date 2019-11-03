@@ -9,7 +9,7 @@
         <!--Root View Controller-->
         <scene sceneID="x7S-Y4-weh">
             <objects>
-                <tableViewController id="zcq-oP-Bms" sceneMemberID="viewController">
+                <tableViewController id="zcq-oP-Bms" customClass="WeatherListViewController" customModule="Simply_Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="IV2-F6-apY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="71" id="KGk-i7-Jjw" customClass="WeatherItemTableViewCell" customModule="Simply_Weather" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WeatherSunny" translatesAutoresizingMaskIntoConstraints="NO" id="id7-DR-JdW">
+                        <rect key="frame" x="16" y="13" width="45" height="45"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="45" id="NHv-Ya-WeO"/>
+                            <constraint firstAttribute="height" constant="45" id="j7H-jC-hDH"/>
+                        </constraints>
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" text="City Name is too long to fit here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENQ-Np-Jl9">
+                        <rect key="frame" x="74" y="15" width="149" height="41"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10°C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fK8-ig-tfT">
+                        <rect key="frame" x="236" y="18" width="68" height="35"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="id7-DR-JdW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="1Nd-tP-HXV"/>
+                    <constraint firstItem="fK8-ig-tfT" firstAttribute="leading" secondItem="ENQ-Np-Jl9" secondAttribute="trailing" constant="13" id="8Bi-6e-Rpl"/>
+                    <constraint firstItem="ENQ-Np-Jl9" firstAttribute="leading" secondItem="id7-DR-JdW" secondAttribute="trailing" constant="13" id="A6J-Zv-fYa"/>
+                    <constraint firstItem="id7-DR-JdW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="HHJ-7E-cWi"/>
+                    <constraint firstItem="fK8-ig-tfT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Jyz-OI-tFK"/>
+                    <constraint firstAttribute="bottom" secondItem="id7-DR-JdW" secondAttribute="bottom" constant="13" id="Yer-os-omc"/>
+                    <constraint firstAttribute="trailing" secondItem="fK8-ig-tfT" secondAttribute="trailing" constant="16" id="bv2-0V-aSH"/>
+                    <constraint firstItem="ENQ-Np-Jl9" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="hMv-e8-yP8"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="cityNameLabel" destination="ENQ-Np-Jl9" id="Nas-Gu-8J0"/>
+                <outlet property="tempLabel" destination="fK8-ig-tfT" id="YNF-43-Tc8"/>
+                <outlet property="weatherImageView" destination="id7-DR-JdW" id="dDb-QH-tjG"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="116.18303571428571"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="WeatherSunny" width="368" height="368"/>
+    </resources>
+</document>

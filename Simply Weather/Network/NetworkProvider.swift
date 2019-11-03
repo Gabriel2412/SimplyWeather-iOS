@@ -20,11 +20,12 @@ class NetworkProvider {
         return Bundle.main.infoDictionary?["NetworkApiKey"] as! String
     }
     
-    func getCurrentWeather(_ completion: @escaping (_ jsonString:String?,Error?)->Void) {
+    func getCurrentWeather(fromCity cityName:String, completion: @escaping (WeatherItem?,Error?)->Void) {
         var urlComps = URLComponents(string: self.urlString)
         urlComps?.queryItems = [
-            URLQueryItem(name: "q", value: "Helsinki"),
-            URLQueryItem(name: "APPID", value: self.apiKey)
+            URLQueryItem(name: "q", value: cityName),
+            URLQueryItem(name: "APPID", value: self.apiKey),
+            URLQueryItem(name: "units", value: "metric")
         ]
         var request = URLRequest(url: urlComps!.url!,
                                         cachePolicy: .useProtocolCachePolicy,
@@ -32,11 +33,16 @@ class NetworkProvider {
         request.httpMethod = "GET"
         let session = URLSession.shared
         let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-            var jsonString:String?
+            var item:WeatherItem?
             if error == nil, let data = data {
-                jsonString = String(data: data, encoding: .utf8)
+                do {
+                    item = try WeatherItem.parseJSON(String(data: data, encoding: .utf8) ?? "")
+                } catch let jsonError {
+                    completion(nil, jsonError)
+                    return
+                }
             }
-            completion(jsonString,error)
+            completion(item,error)
         })
 
         dataTask.resume()
