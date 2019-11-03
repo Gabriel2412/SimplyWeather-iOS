@@ -13,6 +13,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        NetworkProvider.shared.getCurrentWeather {
+                   (jsonString, error) in
+                   if error != nil || jsonString == nil {
+                       NSLog("Some error occurred")
+                       return
+                   }
+                   NSLog("\(jsonString!)")
+                   
+               }
     }
 
 

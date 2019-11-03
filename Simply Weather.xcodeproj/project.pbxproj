@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		C0FDE74C236EC55B0075107D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FDE74B236EC55B0075107D /* AppDelegate.swift */; };
-		C0FDE74E236EC55B0075107D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FDE74D236EC55B0075107D /* SceneDelegate.swift */; };
 		C0FDE750236EC55B0075107D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FDE74F236EC55B0075107D /* ViewController.swift */; };
 		C0FDE753236EC55B0075107D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0FDE751236EC55B0075107D /* Main.storyboard */; };
 		C0FDE755236EC55F0075107D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0FDE754236EC55F0075107D /* Assets.xcassets */; };
 		C0FDE758236EC55F0075107D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0FDE756236EC55F0075107D /* LaunchScreen.storyboard */; };
 		C0FDE763236EC5640075107D /* Simply_WeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FDE762236EC5640075107D /* Simply_WeatherTests.swift */; };
 		C0FDE76E236EC5650075107D /* Simply_WeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FDE76D236EC5650075107D /* Simply_WeatherUITests.swift */; };
+		C0FDE77D236EC5BE0075107D /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FDE77C236EC5BE0075107D /* NetworkProvider.swift */; };
+		C0FDE780236ED4670075107D /* WeatherItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FDE77F236ED4670075107D /* WeatherItem.swift */; };
+		C0FDE783236EDA050075107D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FDE782236EDA050075107D /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +39,6 @@
 /* Begin PBXFileReference section */
 		C0FDE748236EC55B0075107D /* Simply Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simply Weather.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0FDE74B236EC55B0075107D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C0FDE74D236EC55B0075107D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C0FDE74F236EC55B0075107D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C0FDE752236EC55B0075107D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C0FDE754236EC55F0075107D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +50,9 @@
 		C0FDE769236EC5650075107D /* Simply WeatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Simply WeatherUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0FDE76D236EC5650075107D /* Simply_WeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simply_WeatherUITests.swift; sourceTree = "<group>"; };
 		C0FDE76F236EC5650075107D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0FDE77C236EC5BE0075107D /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
+		C0FDE77F236ED4670075107D /* WeatherItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherItem.swift; sourceTree = "<group>"; };
+		C0FDE782236EDA050075107D /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +103,11 @@
 		C0FDE74A236EC55B0075107D /* Simply Weather */ = {
 			isa = PBXGroup;
 			children = (
+				C0FDE781236ED4920075107D /* View */,
+				C0FDE77E236ED4570075107D /* Model */,
+				C0FDE77B236EC5830075107D /* Network */,
 				C0FDE74B236EC55B0075107D /* AppDelegate.swift */,
-				C0FDE74D236EC55B0075107D /* SceneDelegate.swift */,
+				C0FDE782236EDA050075107D /* SceneDelegate.swift */,
 				C0FDE74F236EC55B0075107D /* ViewController.swift */,
 				C0FDE751236EC55B0075107D /* Main.storyboard */,
 				C0FDE754236EC55F0075107D /* Assets.xcassets */,
@@ -126,6 +133,29 @@
 				C0FDE76F236EC5650075107D /* Info.plist */,
 			);
 			path = "Simply WeatherUITests";
+			sourceTree = "<group>";
+		};
+		C0FDE77B236EC5830075107D /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C0FDE77C236EC5BE0075107D /* NetworkProvider.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		C0FDE77E236ED4570075107D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C0FDE77F236ED4670075107D /* WeatherItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C0FDE781236ED4920075107D /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,9 +289,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0FDE783236EDA050075107D /* SceneDelegate.swift in Sources */,
 				C0FDE750236EC55B0075107D /* ViewController.swift in Sources */,
+				C0FDE77D236EC5BE0075107D /* NetworkProvider.swift in Sources */,
+				C0FDE780236ED4670075107D /* WeatherItem.swift in Sources */,
 				C0FDE74C236EC55B0075107D /* AppDelegate.swift in Sources */,
-				C0FDE74E236EC55B0075107D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,6 +473,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				NETWORK_API_KEY = 574f3145a37ddb51a03771d3e5312c78;
+				NETWORK_API_URL = "https://api.openweathermap.org/data/2.5/weather";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.moreno.gabriel.Simply-Weather";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -459,6 +493,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				NETWORK_API_KEY = 574f3145a37ddb51a03771d3e5312c78;
+				NETWORK_API_URL = "https://api.openweathermap.org/data/2.5/weather";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.moreno.gabriel.Simply-Weather";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
