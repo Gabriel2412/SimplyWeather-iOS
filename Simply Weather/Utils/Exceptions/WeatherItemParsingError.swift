@@ -8,7 +8,9 @@
 
 import Foundation
 
-public enum WeatherItemParsingError : Error {
+public enum ParsingError : Error {
     case invalidJSONString
     case invalidData
+    case missingLatLng
+    case requestFailed
 }

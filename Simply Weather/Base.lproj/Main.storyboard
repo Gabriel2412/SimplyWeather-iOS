@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,11 +20,73 @@
                             <outlet property="delegate" destination="zcq-oP-Bms" id="Pcv-xE-H6o"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="egw-AV-xUb"/>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="egw-AV-xUb">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="r7N-Uy-Arq">
+                            <connections>
+                                <segue destination="vbW-PN-DCd" kind="show" identifier="to_new_city" id="upo-uv-S92"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gSN-oD-twO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-317" y="-21"/>
+        </scene>
+        <!--New City-->
+        <scene sceneID="4Gf-Dd-B6Y">
+            <objects>
+                <viewController title="New City" id="vbW-PN-DCd" customClass="AddCityViewController" customModule="Simply_Weather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dwH-Di-IT8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1q-f8-wFZ">
+                                <rect key="frame" x="20" y="152" width="374" height="101.5"/>
+                                <string key="text">Add the city you want to be inform of the weather. The city will be saved in the list so you can track the weather of such place. You can always remove a city by swiping left and choosing delete.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="22w-Vg-5oY">
+                                <rect key="frame" x="20" y="108" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="City" translatesAutoresizingMaskIntoConstraints="NO" id="iwr-3j-1Cq">
+                                <rect key="frame" x="20" y="263.5" width="374" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="n2r-Pi-4TJ"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="22w-Vg-5oY" firstAttribute="leading" secondItem="XrF-QF-7YY" secondAttribute="leading" constant="20" id="3Vd-vt-KTj"/>
+                            <constraint firstItem="XrF-QF-7YY" firstAttribute="trailing" secondItem="iwr-3j-1Cq" secondAttribute="trailing" constant="20" id="6Zg-FS-5eA"/>
+                            <constraint firstItem="iwr-3j-1Cq" firstAttribute="leading" secondItem="XrF-QF-7YY" secondAttribute="leading" constant="20" id="Btj-z9-t2e"/>
+                            <constraint firstItem="R1q-f8-wFZ" firstAttribute="leading" secondItem="XrF-QF-7YY" secondAttribute="leading" constant="20" id="Qfu-AE-Xm5"/>
+                            <constraint firstItem="R1q-f8-wFZ" firstAttribute="top" secondItem="22w-Vg-5oY" secondAttribute="bottom" constant="10" id="Ql6-qy-1t2"/>
+                            <constraint firstItem="22w-Vg-5oY" firstAttribute="top" secondItem="XrF-QF-7YY" secondAttribute="top" constant="20" id="WaD-V4-KWH"/>
+                            <constraint firstAttribute="trailing" secondItem="R1q-f8-wFZ" secondAttribute="trailing" constant="20" id="XfV-cQ-yAA"/>
+                            <constraint firstItem="iwr-3j-1Cq" firstAttribute="top" secondItem="R1q-f8-wFZ" secondAttribute="bottom" constant="10" id="gQC-OM-sY4"/>
+                            <constraint firstItem="XrF-QF-7YY" firstAttribute="trailing" secondItem="22w-Vg-5oY" secondAttribute="trailing" constant="20" id="hW1-pJ-7MC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XrF-QF-7YY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="fld-UK-RLU">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="FiP-OF-QBo">
+                            <connections>
+                                <action selector="onPressDone:" destination="vbW-PN-DCd" id="0Qc-f0-gKz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cityNameTextField" destination="22w-Vg-5oY" id="NFL-X0-WUf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AYv-Ud-MKF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="785" y="-29"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="72l-KE-Vtt">
@@ -42,4 +105,7 @@
             <point key="canvasLocation" x="-1238" y="-22"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="City" width="496" height="496"/>
+    </resources>
 </document>

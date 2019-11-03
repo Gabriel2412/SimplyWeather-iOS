@@ -9,56 +9,37 @@
 import Foundation
 
 class WeatherItem {
-    //JSON Data Sources
-    private let jsonDictionary:[String:Any]
-    private var mainDictionary:[String:Any] {
-        return self.jsonDictionary["main"] as! [String:Any]
-    }
+    private let iconCode:String?
     
-    //Class Fields
-    var icon:String!
+    let cityName:String
+    let temp:Double
+    let tempMax:Double
+    let tempMin:Double
+    let humidity:Int
+    let pressure:Int
+    let tempUnit:String
     
-    var cityName:String {
-        return jsonDictionary["name"] as! String
-    }
-    
-    var temp:Double {
-        return mainDictionary["temp"] as! Double
-    }
-    
-    var tempMax:Double {
-        return mainDictionary["temp_max"] as! Double
-    }
-    
-    var tempMin:Double {
-        return mainDictionary["temp_min"] as! Double
-    }
-    
-    var humidity:Int {
-        return mainDictionary["humidity"] as! Int
-    }
-    
-    var pressure:Int {
-        return mainDictionary["pressure"] as! Int
-    }
-    
-    var tempUnit:String {
-        return "°C"
-    }
-    
-    private init(_ dictionary:[String:Any]) {
-        self.jsonDictionary = dictionary
-    }
-    
-    class func parseJSON(_ jsonString:String) throws -> WeatherItem {
-        if let data = jsonString.data(using: .utf8) {
-            do {
-                let jsonDictionary = try JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-                return WeatherItem(jsonDictionary)
-            } catch {
-                throw WeatherItemParsingError.invalidJSONString
-            }
+    var iconUrl:String {
+        if let imageCode = iconCode {
+            return "https://openweathermap.org/img/wn/\(imageCode)@2x.png"
+        } else {
+            return "https://openweathermap.org/img/wn/01d@2x.png"
         }
-        throw WeatherItemParsingError.invalidData
+    }
+    
+    fileprivate init(_ jsonDictionary:[String:Any]) {
+        let mainDictionary = jsonDictionary["main"] as! [String:Any]
+        cityName = jsonDictionary["name"] as! String
+        temp = mainDictionary["temp"] as! Double
+        tempMax = mainDictionary["temp_max"] as! Double
+        tempMin = mainDictionary["temp_min"] as! Double
+        humidity = mainDictionary["humidity"] as! Int
+        pressure = mainDictionary["pressure"] as! Int
+        iconCode =  (jsonDictionary["weather"] as? [[String:Any]])?.first?["icon"] as? String
+        tempUnit = "°C" //For future version, can support Imperial Temperature units.
+    }
+    
+    class func parseJSON(_ dictionary:[String:Any]) -> WeatherItem {
+        return WeatherItem(dictionary)
     }
 }

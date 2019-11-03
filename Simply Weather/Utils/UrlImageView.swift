@@ -8,22 +8,26 @@
 
 import UIKit
 
-let imageCache = NSCache<NSString, UIImage>()
+fileprivate let imageCache = NSCache<NSString, UIImage>()
 
 class UrlImageView : UIImageView {
     
-    var tmpUrlString:String?
+    private var tmpUrlString:String?
     
+    /**
+    Try to load into the image view the given url image
+    - parameter urlString: A url string pointing to an image.
+     */
     func loadFromUrl(_ urlString:String) {
         self.tmpUrlString = urlString
-        
+        self.image = nil
         if let cachedImage = imageCache.object(forKey: urlString as NSString) {
             self.image = cachedImage
             NSLog("Image was already on cache. Download not needed")
             return
         }
         
-        URLSession.shared.dataTask(with: URL(string:urlString)!) {
+        URLSession.shared.dataTask(with: URL(string:urlString)!, completionHandler: {
             (data,response,error) in
             if error != nil || data == nil {
                 NSLog("There has been some error trying to load the image from url")
@@ -38,6 +42,7 @@ class UrlImageView : UIImageView {
                 }
             }
             imageCache.setObject(downloadedImage!, forKey: urlString as NSString)
-        }
+            }
+        ).resume()
     }
 }

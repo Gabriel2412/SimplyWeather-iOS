@@ -10,18 +10,14 @@ import UIKit
 
 class WeatherItemTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var weatherImageView:UIImageView!
+    @IBOutlet weak var weatherImageView:UrlImageView!
     @IBOutlet weak var cityNameLabel:UILabel!
     @IBOutlet weak var tempLabel:UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
     func configure(_ weatherItem:WeatherItem) {
         cityNameLabel.text = weatherItem.cityName
         tempLabel.text = "\(weatherItem.temp)\(weatherItem.tempUnit)"
+        weatherImageView.loadFromUrl(weatherItem.iconUrl)
     }
     
 }
