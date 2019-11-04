@@ -17,7 +17,7 @@ class WeatherListViewController: UITableViewController, AddCityDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "Simply Weather"
         self.placeholder = UILabel()
         self.placeholder.text = "Press + to add a city."
         self.placeholder.isHidden = true
